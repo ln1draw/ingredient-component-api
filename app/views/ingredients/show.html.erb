@@ -4,6 +4,13 @@
   <strong>Name:</strong>
   <%= @ingredient.name %>
 </p>
+
+<% if @ingredient.verified %>
+  This ingredient has been verified!
+<% else %>
+  <strong>WARNING:</strong> This ingredient has not been verified!
+<% end %>
+
 <p>
   <strong>Components:</strong><br>
   <% @ingredient.components.each do |component| %>

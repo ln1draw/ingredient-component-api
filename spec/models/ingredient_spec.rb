@@ -15,5 +15,10 @@ describe Ingredient do
     it "'verified' defaults to false" do 
       expect(ingredient.verified). to be(false)
     end
+
+    it 'uniqueness of name' do
+      ingredient.update(name: 'Boring Name')
+      expect(build(:ingredient, name: 'Boring Name')).to be_invalid
+    end
   end
 end

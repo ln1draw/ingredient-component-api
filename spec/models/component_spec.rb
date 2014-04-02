@@ -15,5 +15,10 @@ describe Component do
     it "'verified' defaults to false" do 
       expect(component.verified). to be(false)
     end
+
+    it 'uniqueness of name' do
+      component.update(name: 'Boring Name')
+      expect(build(:component, name: 'Boring Name')).to be_invalid
+    end
   end
 end

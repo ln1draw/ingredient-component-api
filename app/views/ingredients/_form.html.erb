@@ -23,6 +23,11 @@
     <% end %>
   </div>
 
+  <div class='ui checkbox'>
+    <%= f.check_box :verified, value: true %>
+    <label><strong>Verify?</strong></label>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

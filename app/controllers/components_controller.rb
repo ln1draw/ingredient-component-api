@@ -25,29 +25,20 @@ class ComponentsController < ApplicationController
   # POST /components.json
   def create
     @component = Component.new(component_params)
-
-    respond_to do |format|
-      if @component.save
-        format.html { redirect_to @component, notice: 'Component was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @component }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @component.errors, status: :unprocessable_entity }
-      end
+    if @component.save
+      redirect_to @component, notice: 'Component was successfully created.'    
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /components/1
   # PATCH/PUT /components/1.json
   def update
-    respond_to do |format|
-      if @component.update(component_params)
-        format.html { redirect_to @component, notice: 'Component was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @component.errors, status: :unprocessable_entity }
-      end
+    if @component.update(component_params)
+      redirect_to @component, notice: 'Component was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
@@ -55,10 +46,7 @@ class ComponentsController < ApplicationController
   # DELETE /components/1.json
   def destroy
     @component.destroy
-    respond_to do |format|
-      format.html { redirect_to components_url }
-      format.json { head :no_content }
-    end
+    redirect_to components_url
   end
 
   private
@@ -69,6 +57,6 @@ class ComponentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:name)
+      params.require(:component).permit(:name, :verified)
     end
 end

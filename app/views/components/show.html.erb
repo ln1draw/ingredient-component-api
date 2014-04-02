@@ -5,5 +5,12 @@
   <%= @component.name %>
 </p>
 
+<% if @component.verified %>
+  This component has been verified!
+<% else %>
+  <strong>WARNING:</strong> This component has not been verified!
+<% end %>
+<br>
+
 <%= link_to 'Edit', edit_component_path(@component) %> |
 <%= link_to 'Back', components_path %>
