@@ -1,0 +1,29 @@
+<h1>Listing component_ingredients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Ingredient</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @component_ingredients.each do |component_ingredient| %>
+      <tr>
+        <td><%= component_ingredient.component_id %></td>
+        <td><%= component_ingredient.ingredient_id %></td>
+        <td><%= link_to 'Show', component_ingredient %></td>
+        <td><%= link_to 'Edit', edit_component_ingredient_path(component_ingredient) %></td>
+        <td><%= link_to 'Destroy', component_ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Component ingredient', new_component_ingredient_path %>
