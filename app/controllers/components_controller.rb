@@ -25,26 +25,41 @@ class ComponentsController < ApplicationController
   # POST /components.json
   def create
     @component = Component.new(component_params)
-    if @component.save
-      redirect_to @component, notice: 'Component was successfully created.'    
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @component.save
+        format.html { redirect_to @component, notice: 'Component was successfully created.' }
+        format.json { 
+          @component.update(verified: false)
+          render action: 'show', status: :created, location: @component 
+        }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @component.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /components/1
   # PATCH/PUT /components/1.json
   def update
-    if @component.update(component_params)
-      redirect_to @component, notice: 'Component was successfully updated.'
-    else
-      render action: 'edit'
+    respond_to do |format|
+      if @component.update(component_params)
+        format.html { redirect_to @component, notice: 'Component was successfully updated.' }
+        format.json { 
+          @component.update(verified: false)
+          head :no_content 
+        }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @component.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /components/1
   # DELETE /components/1.json
   def destroy
+    Ingredient.delete_component(@component.id)
     @component.destroy
     redirect_to components_url
   end

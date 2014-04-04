@@ -1,4 +1,7 @@
 EpicookbookAPI::Application.routes.draw do
+  
+  get '/ingredients/find/:name' => 'ingredients#by_name'
+
   resources :component_ingredients
 
   resources :ingredients

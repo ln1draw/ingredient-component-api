@@ -29,7 +29,10 @@ class ComponentIngredientsController < ApplicationController
     respond_to do |format|
       if @component_ingredient.save
         format.html { redirect_to @component_ingredient, notice: 'Component ingredient was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @component_ingredient }
+        format.json { 
+          @component_ingredient.update(verified: false)
+          render action: 'show', status: :created, location: @component_ingredient 
+        }
       else
         format.html { render action: 'new' }
         format.json { render json: @component_ingredient.errors, status: :unprocessable_entity }

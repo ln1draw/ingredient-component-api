@@ -65,4 +65,21 @@ describe ComponentsController do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    before(:each) do
+      @component = Component.create(name: 'They should all be destroyed!')
+    end
+
+    it 'deletes the component' do
+      count = Component.all.length
+      delete :destroy, id: @component
+      expect(Component.all.length).to eq(count - 1)
+    end
+
+    it 'redirects to components#index' do
+      delete :destroy, id: @component
+      expect(response).to redirect_to components_path
+    end
+  end
 end

@@ -4,7 +4,7 @@ json.ingredient {
   json.verified @ingredient.verified
   components_array = []
   @ingredient.components.each do |component|
-    components_array << component.id
+    components_array << component.name
   end
   json.components components_array
 }

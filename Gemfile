@@ -40,6 +40,8 @@ group :development, :test do
   gem 'simplecov', '~> 0.7.1', require: false
 end
 
+gem 'rack-cors'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

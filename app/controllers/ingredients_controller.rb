@@ -12,6 +12,10 @@ class IngredientsController < ApplicationController
   def show
   end
 
+  def by_name
+    @ingredient = Ingredient.where(name: params[:name])[0]
+  end
+
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
@@ -32,7 +36,10 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.save
         format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ingredient }
+        format.json { 
+          @ingredient.update(verified: false)
+          render action: 'show', status: :created, location: @ingredient 
+        }
       else
         components
         format.html { render action: 'new' }
@@ -47,7 +54,10 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.update(ingredient_params)
         format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
-        format.json { head :no_content }
+        format.json { 
+          @ingredient.update(verified: false)
+          head :no_content 
+        }
       else
         components
         format.html { render action: 'edit' }
