@@ -66,6 +66,11 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def unverified
+    @ingredients = Ingredient.where(verified: false)
+    @components = Component.where(verified: false)
+  end
+
   # DELETE /ingredients/1
   # DELETE /ingredients/1.json
   def destroy
