@@ -1,8 +1,15 @@
 EpicookbookAPI::Application.routes.draw do
-  
-  devise_for :admins
+  namespace :api do
+    get '/ingredients/find/:name' => 'ingredients#by_name'
+    
+    resources :component_ingredients
 
-  get '/ingredients/find/:name' => 'ingredients#by_name'
+    resources :ingredients
+
+    resources :components
+  end
+
+  devise_for :admins
 
   resources :component_ingredients
 
