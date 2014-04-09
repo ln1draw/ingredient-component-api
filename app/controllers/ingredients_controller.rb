@@ -51,8 +51,11 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1
   # PATCH/PUT /ingredients/1.json
   def update
+
     respond_to do |format|
       if @ingredient.update(ingredient_params)
+        add_components_to_ingredients
+        
         format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
         format.json { 
           @ingredient.update(verified: false)
