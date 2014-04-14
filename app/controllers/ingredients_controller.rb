@@ -4,7 +4,15 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.sort {|a, b| 
+      if a.verified && b.verified
+        a <=> b
+      elsif a.verified && !b.verified
+        1
+      else 
+        -1
+      end
+    }
   end
 
   # GET /ingredients/1
