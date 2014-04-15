@@ -1,1 +1,36 @@
-documentation.html.erb
+<h2>To use this API</h2>
+<p>This API is part of a food transparency project. Reliable information is a major feature, and therefore the general public may only use the API to make GET requests.<p>
+
+<p>To use this API, refer to the following table. All URLS are relative to the base URL of http://www.whatsinmyfood.info .</p>
+
+<table>
+  <tr>
+    <strong>
+      <th>Action</th>
+      <th>Method</th>
+      <th>URL</th>
+      <th>Example</th>
+    </strong>
+  </tr>
+
+  <tr>
+    <td>Get a list of components that belong to an ingredient, by name</td>
+    <td>GET</td>
+    <td>"ingredients/find/:name.json"</td>
+    <td>GET "http://www.whatsinmyfood.info/ingredients/find/bisquick.json"</td>
+  </tr>
+  
+  <tr>
+    <td>Get a list of components that belong to an ingredient, by id</td>
+    <td>GET</td>
+    <td>"ingredients/:id.json"</td>
+    <td>GET "http://www.whatsinmyfood.info/ingredients/2.json"</td>
+  </tr>
+
+  <tr>
+    <td>Get data abotu a component, including whether it is verified or not, by id</td>
+    <td>GET</td>
+    <td>"components/:id.json"</td>
+    <td>GET "http://www.whatsinmyfood.info/componenets/3.json"</td>
+  </tr>
+</table>
