@@ -10,7 +10,7 @@ module EpicookbookAPI
   class Application < Rails::Application
     config.middleware.use Rack::Cors do
         allow do
-            origins 'http://localhost:8000/'
+            origins 'http://localhost:3000'
             resource '*', :headers => :any, :method => [:get, :options, :post]
         end
 

@@ -11,3 +11,42 @@
  *= require_self
  *= require_tree .
  */
+
+body{
+  width: 80%;
+  margin: auto;
+}
+
+.header{
+  background-color: lightblue;
+  min-height: 120px;
+  padding: 5px;
+}
+
+.header-links h2{
+  display: inline;
+  max-width: 15%;
+  margin: auto;
+  text-align: center;
+}
+
+.ingredient-header{
+  text-align: center;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.ingredient-table{
+  width: 50%;
+  margin: auto;
+}
+
+.ingredient-name{
+  width: 50%;
+  text-align: center;
+}
+
+.verified{
+  text-align: center;
+  width: 3em;
+}

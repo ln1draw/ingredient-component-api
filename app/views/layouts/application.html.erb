@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EpicookbookAPI</title>
+  <title>What's In My Food?</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class='header'>
+    <h1><a href='/'>WhatsInMyFood.info</a></h1>
+    <p>a food transparency project</p>
+    <div class='header-links'>
+    <h2><a href='/documentation'>Documentation</a></h2>
+      <% if admin_signed_in? %>
+        <h2><a href='/ingredients'>Ingredients</a></h2>
+        <h2><a href='/components'>Components</a></h2>
+        <h2><a href='/unverified'>Needs Verification</a></h2>
+        <h2><%= link_to "Sign out", destroy_admin_session_path, :method => :delete %></h2>
+      <% else %>
+        <h2><a href='mailto:shanghaiellen@gmail.com'>Volunteer for Administration</a></h2>
+      <% end %>
+    </div>
+  </div><br>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <%= yield %>
 
 </body>
 </html>
