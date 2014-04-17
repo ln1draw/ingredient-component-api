@@ -1,27 +1,25 @@
-<h1>Listing ingredients</h1>
+<div class='ingredient-header'>
+  <h1>Ingredients</h1>
 
-<table>
+  <%= link_to 'New Ingredient', new_ingredient_path %>
+</div>
+
+<table class='ingredient-table'>
   <thead>
     <tr>
+      <th>Verified?</th>
       <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @ingredients.each do |ingredient| %>
       <tr>
-        <td><%= ingredient.name %></td>
-        <td><%= link_to 'Show', ingredient %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='verified'><%= ingredient.verified%></td>
+        <td class='ingredient-name'><%= link_to ingredient.name, ingredient %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Ingredient', new_ingredient_path %>
