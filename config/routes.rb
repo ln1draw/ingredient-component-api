@@ -7,6 +7,8 @@ EpicookbookAPI::Application.routes.draw do
     resources :ingredients
 
     resources :components
+
+    post '/ingredients' => 'ingredients#create'
   end
 
   devise_for :admins

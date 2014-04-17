@@ -39,7 +39,7 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @component = Component.new(name: params[:name], basic: false)
+    @component = Component.new(name: params[:ingredient][:name], basic: false)
     @ingredient.components << @component
     add_components_to_ingredients
 
