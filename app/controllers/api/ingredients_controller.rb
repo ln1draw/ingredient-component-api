@@ -82,6 +82,7 @@ class Api::IngredientsController < Api::ApiController
   end
 
   def add_components_to_ingredients
+    puts params.inspect
     if params[:ingredient][:components]
       params[:ingredient][:components].each do |component_id|
         next if component_id.to_i == 0
