@@ -94,6 +94,6 @@ class Api::IngredientsController < Api::ApiController
 
   
   def ingredient_params
-    params.require(:ingredient).permit(:name, :verified, :components => {})
+    params.require(:ingredient).permit(:name, :verified, :id, :components => {})
   end
 end
